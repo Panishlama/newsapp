@@ -18,10 +18,17 @@ const News = (props) => {
 
       const url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=${props.pageSize}&apikey=${props.apiKey}`;
 
+      console.log("URL:", url);
+
       const res = await fetch(url);
       props.setProgress(50);
 
       const data = await res.json();
+
+      // DEBUG
+      console.log("API KEY:", props.apiKey);
+      console.log("API RESPONSE:", data);
+
       props.setProgress(80);
 
       setArticles(data.articles || []);
@@ -29,7 +36,7 @@ const News = (props) => {
       setLoading(false);
       props.setProgress(100);
     } catch (error) {
-      console.error(error);
+      console.error("ERROR:", error);
       setLoading(false);
     }
   };
@@ -53,19 +60,21 @@ const News = (props) => {
 
       <div className="row">
         {!loading && articles.length === 0 && (
-          <h5 className="text-center text-muted">No news available.</h5>
+          <h5 className="text-center text-muted">
+            No news available.
+          </h5>
         )}
 
         {articles.map((element) => (
           <div className="col-md-4" key={element.url}>
             <NewsItem
-              title={element.title ? element.title : ""}
-              description={element.description ? element.description : ""}
+              title={element.title || ""}
+              description={element.description || ""}
               imageUrl={element.image}
               newsUrl={element.url}
-              author={element.source.name}
+              author={element.source?.name || "Unknown"}
               date={new Date(element.publishedAt).toGMTString()}
-              source={element.source.name}
+              source={element.source?.name || "Unknown"}
             />
           </div>
         ))}
