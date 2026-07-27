@@ -16,12 +16,112 @@ const App = () => {
     <div>
       <Router>
         <NavBar />
-        <LoadingBar
-          color="#f11946"
-          progress={progress}
-        />
+        <LoadingBar color="#f11946" progress={progress} />
+
         <Routes>
-          {/* your routes remain exactly the same */}
+          <Route
+            path="/"
+            element={
+              <News
+                setProgress={setProgress}
+                apiKey={apiKey}
+                pageSize={pageSize}
+                country="us"
+                category="general"
+              />
+            }
+          />
+
+          <Route
+            path="/general"
+            element={
+              <News
+                setProgress={setProgress}
+                apiKey={apiKey}
+                pageSize={pageSize}
+                country="us"
+                category="general"
+              />
+            }
+          />
+
+          <Route
+            path="/business"
+            element={
+              <News
+                setProgress={setProgress}
+                apiKey={apiKey}
+                pageSize={pageSize}
+                country="us"
+                category="business"
+              />
+            }
+          />
+
+          <Route
+            path="/entertainment"
+            element={
+              <News
+                setProgress={setProgress}
+                apiKey={apiKey}
+                pageSize={pageSize}
+                country="us"
+                category="entertainment"
+              />
+            }
+          />
+
+          <Route
+            path="/health"
+            element={
+              <News
+                setProgress={setProgress}
+                apiKey={apiKey}
+                pageSize={pageSize}
+                country="us"
+                category="health"
+              />
+            }
+          />
+
+          <Route
+            path="/science"
+            element={
+              <News
+                setProgress={setProgress}
+                apiKey={apiKey}
+                pageSize={pageSize}
+                country="us"
+                category="science"
+              />
+            }
+          />
+
+          <Route
+            path="/sports"
+            element={
+              <News
+                setProgress={setProgress}
+                apiKey={apiKey}
+                pageSize={pageSize}
+                country="us"
+                category="sports"
+              />
+            }
+          />
+
+          <Route
+            path="/technology"
+            element={
+              <News
+                setProgress={setProgress}
+                apiKey={apiKey}
+                pageSize={pageSize}
+                country="us"
+                category="technology"
+              />
+            }
+          />
         </Routes>
       </Router>
     </div>
